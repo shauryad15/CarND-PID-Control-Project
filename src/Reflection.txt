@@ -1,0 +1,10 @@
+The P or "propotional" component has the most direct effect on the car's behaviour. It makes car to steer on the opposite direction directly propotional to it's distance from the CTE. It means, the more the distance of the car from the CTE the hard it'll steer but in the oppposite direction.
+
+The D or "differential" component balances the P component by counteracting it. It'll avoid the car to overshoot and come to the centre smoothly.
+
+The I or "integral" component balances the biasness of the CTE which may get generated because of the drift added to the steering angle. 
+
+The final parameters was choosen by manual tuning. My final parameters depends on the hardware limitation.
+I initially tried to use twiddle to adjust the parameters but because of the hardware, the overhead increased on the CPU when i ran simulator as it was consuming around 80% of my CPU ram.
+Then i started tuning it manually, none of the values were initially working as the response time of CPU was very slow. To tackle that i had to reduce the throttle speed to "0.05" with Kp as "0.20", Ki as "0.0" as no drift or biasness was detected in the code provided by udacity and Ki as "0.45".
+Many different values of Kd worked on different machines without tuning the throttle such as "1.57". But i chose to stuck with the values that worked on my system.
